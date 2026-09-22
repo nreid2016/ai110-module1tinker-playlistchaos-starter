@@ -21,6 +21,7 @@ def inject_theme():
         """
         <style>
         .stApp {
+            color: #fff3a6;
             background:
                 radial-gradient(circle at 12% 12%, rgba(55, 130, 190, .22), transparent 26%),
                 radial-gradient(circle at 88% 18%, rgba(126, 55, 180, .22), transparent 28%),
@@ -37,6 +38,9 @@ def inject_theme():
             background-position: center bottom;
         }
         [data-testid="stHeader"] { background: rgba(0,0,0,0); }
+        .stApp h1, .stApp h2, .stApp h3 { color: #ffe66d !important; text-shadow: 0 0 12px rgba(255, 230, 109, .45); }
+        .stApp p, .stApp label, .stApp .stMarkdown, .stApp [data-testid="stMetricLabel"] { color: #fff3a6 !important; }
+        .stApp [data-testid="stMetricValue"] { color: #ffe66d !important; text-shadow: 0 0 10px rgba(255, 230, 109, .55); }
         [data-testid="stSidebar"] { background: linear-gradient(180deg, rgba(8, 22, 40, .96), rgba(24, 10, 39, .96)); border-right: 1px solid rgba(93, 220, 255, .18); }
         .block-container { position: relative; z-index: 2; }
         .playlist-decor { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
