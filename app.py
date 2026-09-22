@@ -15,6 +15,53 @@ from playlist_logic import (
 GENRE_OPTIONS = ["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"]
 
 
+def inject_theme():
+    """Add the Playlist Chaos visual theme and decorative background."""
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background:
+                radial-gradient(circle at 12% 12%, rgba(55, 130, 190, .22), transparent 26%),
+                radial-gradient(circle at 88% 18%, rgba(126, 55, 180, .22), transparent 28%),
+                linear-gradient(145deg, #07111f 0%, #10162d 48%, #180d28 100%);
+        }
+        .stApp::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .22;
+            background-image: url("data:image/svg+xml,%3Csvg width='900' height='260' viewBox='0 0 900 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 150 C120 65 210 230 340 135 S580 70 700 145 S820 210 900 120' fill='none' stroke='%235ddcff' stroke-width='3' stroke-opacity='.55'/%3E%3Cpath d='M0 190 C120 105 210 270 340 175 S580 110 700 185 S820 250 900 160' fill='none' stroke='%23b26cff' stroke-width='2' stroke-opacity='.5'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center bottom;
+        }
+        [data-testid="stHeader"] { background: rgba(0,0,0,0); }
+        [data-testid="stSidebar"] { background: linear-gradient(180deg, rgba(8, 22, 40, .96), rgba(24, 10, 39, .96)); border-right: 1px solid rgba(93, 220, 255, .18); }
+        .block-container { position: relative; z-index: 2; }
+        .playlist-decor { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+        .headphones { position: absolute; top: 7%; left: 4%; font-size: 4.5rem; filter: drop-shadow(0 0 18px #5ddcff); opacity: .8; transform: rotate(-12deg); }
+        .storm { position: absolute; top: 8%; right: 7%; font-size: 4rem; filter: drop-shadow(0 0 16px #9c72ff); opacity: .85; }
+        .bolt { position: absolute; top: 17%; right: 14%; font-size: 2.8rem; color: #ffe66d; filter: drop-shadow(0 0 16px #ffe66d); animation: pulse 1.8s infinite; }
+        .leds { position: absolute; left: 6%; bottom: 8%; display: flex; gap: 12px; }
+        .leds i { width: 10px; height: 10px; border-radius: 50%; background: #5ddcff; box-shadow: 0 0 14px 5px #5ddcff; animation: blink 1.7s infinite alternate; }
+        .leds i:nth-child(2) { background: #d46cff; box-shadow: 0 0 14px 5px #d46cff; animation-delay: .3s; }
+        .leds i:nth-child(3) { background: #ffe66d; box-shadow: 0 0 14px 5px #ffe66d; animation-delay: .6s; }
+        .leds i:nth-child(4) { background: #66f2a5; box-shadow: 0 0 14px 5px #66f2a5; animation-delay: .9s; }
+        @keyframes pulse { 50% { transform: scale(1.18) rotate(8deg); opacity: .55; } }
+        @keyframes blink { from { opacity: .35; } to { opacity: 1; } }
+        </style>
+        <div class="playlist-decor" aria-hidden="true">
+            <div class="headphones">🎧</div>
+            <div class="storm">☁️</div>
+            <div class="bolt">⚡</div>
+            <div class="leds"><i></i><i></i><i></i><i></i></div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def init_state():
     """Initialize Streamlit session state."""
     if "songs" not in st.session_state:
@@ -381,6 +428,7 @@ def clear_controls():
 
 def main():
     st.set_page_config(page_title="Playlist Chaos", layout="wide")
+    inject_theme()
     st.title("Playlist Chaos")
 
     st.write(
