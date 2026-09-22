@@ -12,6 +12,8 @@ from playlist_logic import (
     search_songs,
 )
 
+GENRE_OPTIONS = ["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"]
+
 
 def init_state():
     """Initialize Streamlit session state."""
@@ -212,10 +214,8 @@ def profile_sidebar():
 
     profile["favorite_genre"] = st.sidebar.selectbox(
         "Favorite genre",
-        options=["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"],
-        index=["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"].index(
-            profile.get("favorite_genre", "rock")
-        ),
+        options=GENRE_OPTIONS,
+        index=GENRE_OPTIONS.index(profile.get("favorite_genre", "rock")),
     )
 
     profile["include_mixed"] = st.sidebar.checkbox(
@@ -234,7 +234,7 @@ def add_song_sidebar():
     artist = st.sidebar.text_input("Artist")
     genre = st.sidebar.selectbox(
         "Genre",
-        options=["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"],
+        options=GENRE_OPTIONS,
     )
     energy = st.sidebar.slider("Energy", min_value=1, max_value=10, value=5)
     tags_text = st.sidebar.text_input("Tags (comma separated)")
