@@ -44,6 +44,10 @@ def inject_theme():
         [data-testid="stSidebar"] { background: linear-gradient(180deg, rgba(8, 22, 40, .96), rgba(24, 10, 39, .96)); border-right: 1px solid rgba(93, 220, 255, .18); }
         [data-testid="stSidebar"] button { background: #101a31 !important; color: #ffe66d !important; border: 1px solid rgba(255, 230, 109, .65) !important; box-shadow: 0 0 10px rgba(255, 230, 109, .12); }
         [data-testid="stSidebar"] button:hover { background: #26365a !important; color: #fff3a6 !important; border-color: #ffe66d !important; box-shadow: 0 0 16px rgba(255, 230, 109, .35); }
+        [data-testid="stSidebar"] input, [data-testid="stSidebar"] textarea { background: #101a31 !important; color: #fff3a6 !important; caret-color: #ffe66d !important; border-color: rgba(255, 230, 109, .6) !important; }
+        [data-testid="stSidebar"] input:hover, [data-testid="stSidebar"] textarea:hover { background: #26365a !important; color: #ffe66d !important; }
+        [data-testid="stSidebar"] [data-baseweb="select"] > div { background: #101a31 !important; color: #fff3a6 !important; border-color: rgba(255, 230, 109, .6) !important; }
+        [data-testid="stSidebar"] [data-baseweb="select"] * { color: #fff3a6 !important; }
         .block-container { position: relative; z-index: 2; }
         .playlist-decor { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
         .headphones { position: absolute; top: 7%; left: 4%; font-size: 4.5rem; filter: drop-shadow(0 0 18px #5ddcff); opacity: .8; transform: rotate(-12deg); }
