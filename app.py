@@ -213,7 +213,9 @@ def profile_sidebar():
     profile["favorite_genre"] = st.sidebar.selectbox(
         "Favorite genre",
         options=["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"],
-        index=0,
+        index=["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"].index(
+            profile.get("favorite_genre", "rock")
+        ),
     )
 
     profile["include_mixed"] = st.sidebar.checkbox(
@@ -248,11 +250,14 @@ def add_song_sidebar():
             "energy": energy,
             "tags": tags,
         }
-        if title and artist:
+        if title.strip() and artist.strip():
             normalized = normalize_song(song)
             all_songs = st.session_state.songs[:]
             all_songs.append(normalized)
             st.session_state.songs = all_songs
+            st.sidebar.success(f"Added {normalized['title']}.")
+        else:
+            st.sidebar.error("Title and artist are required.")
 
 
 def playlist_tabs(playlists):
